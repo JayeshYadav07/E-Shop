@@ -1,4 +1,4 @@
-const productData = require("../utils/ProductData");
+const productData = require("../utils/productData");
 
 const getAllProducts = (req, res) => {
 	try {
