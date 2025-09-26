@@ -3,6 +3,7 @@ import MainLayout from "./layouts/MainLayout.jsx";
 import Products from "./pages/Products.jsx";
 import Cart from "./pages/Cart.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import AppProvider from "./components/AppProvider.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -27,9 +28,9 @@ const router = createBrowserRouter([
 
 function App() {
 	return (
-		<>
+		<AppProvider>
 			<RouterProvider router={router} />
-		</>
+		</AppProvider>
 	);
 }
 

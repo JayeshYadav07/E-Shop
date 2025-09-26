@@ -1,8 +1,23 @@
 import { Loader2, Plus } from "lucide-react";
-import React from "react";
+import React, { useContext, useState } from "react";
+import AppContext from "../contexts/AppContext";
 
 const ProductCard = React.memo(({ product }) => {
-	const [isAdding, setIsAdding] = React.useState(false);
+	const { handleAddToCart, showToast } = useContext(AppContext);
+	const [isAdding, setIsAdding] = useState(false);
+
+	const handleAddToCartClick = () => {
+		setIsAdding(true);
+		try {
+			handleAddToCart(product);
+			showToast("success", "Item added to cart");
+		} catch (error) {
+			showToast("error", "Failed to add item to cart");
+		} finally {
+			setIsAdding(false);
+		}
+	};
+
 	return (
 		<div className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
 			<div className="relative">
@@ -34,7 +49,8 @@ const ProductCard = React.memo(({ product }) => {
 					</span>
 					<button
 						disabled={isAdding}
-						className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+						onClick={handleAddToCartClick}
+						className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 disabled:cursor-not-allowed disabled:opacity-70"
 					>
 						{isAdding ? (
 							<Loader2 className="w-4 h-4 animate-spin" />
