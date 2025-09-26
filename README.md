@@ -1,6 +1,10 @@
 # E-Shop
 
-Test Task!
+A simple e-commerce application built with React, Express.
+
+## 🚀 Live Demo
+
+👉 [Click here to view the live app](https://e-shop-bunny.vercel.app/)
 
 ## Key Features & Benefits
 
